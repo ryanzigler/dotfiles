@@ -6,79 +6,54 @@ tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 
 # Binaries
-brew 'awscli'
-brew 'bash' # Latest Bash version
 brew 'coreutils' # Those that come with macOS are outdated
 brew 'ffmpeg'
 brew 'gh'
 brew 'git'
-brew 'gnupg'
-brew 'grep'
-brew 'httpie'
-brew 'hub'
+brew 'gist'
 brew 'mackup'
 brew 'mas' # Mac App Store manager
 brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
-brew 'stripe/stripe-cli/stripe'
-brew 'svn'
-brew 'trash' # Manage the Trash bin
 brew 'tree' # List directories in a tree structure
-brew 'zlib' # Needed for Memcached
+brew 'zsh'
+brew 'nano'
+brew 'nvm'
+brew 'weget'
 
 # Spatie Medialibrary
 brew 'jpegoptim'
-brew 'optipng'
 brew 'pngquant'
 brew 'svgo'
-brew 'gifsicle'
-
-# Development
-brew 'php'
-brew 'php@7.4'
-brew 'php@7.3'
-brew 'composer'
-brew 'imagemagick'
-brew 'libmemcached'
-brew 'meilisearch'
-brew 'memcached'
-brew 'mysql'
-brew 'nginx'
-brew 'node'
-brew 'redis'
-brew 'yarn'
 
 # Apps
 cask '1password'
-cask '1password-cli'
-cask 'aerial'
 cask 'alfred'
+cask 'appcleaner'
+cask 'authy'
+cask 'barrier'
+cask 'browserstacklocal'
+cask 'bettertouchtool'
 cask 'caffeine'
-cask 'dbngin'
+cask 'dash'
 cask 'discord'
-cask 'docker'
+cask 'dozer'
+cask 'droplr'
 cask 'figma'
 cask 'firefox'
-cask 'github'
 cask 'google-backup-and-sync'
 cask 'google-chrome'
-cask 'gpg-suite'
-cask 'imageoptim'
-cask 'insomnia'
-cask 'phpmon'
-cask 'phpstorm'
-cask 'ray'
-cask 'screenflow'
+cask 'iina'
+cask 'karabiner-elements'
+cask 'onyx'
+cask 'postman'
+cask 'purevpn'
+cask 'rectangle'
+cask 'scroll-reverser'
 cask 'signal'
-cask 'slack'
+cask 'soundsource'
+cask 'spotify'
 cask 'sublime-text'
-cask 'tableplus'
-cask 'telegram-desktop'
 cask 'the-unarchiver'
-cask 'tinkerwell'
-cask 'transmission'
-cask 'transmit'
-cask 'tunnelbear'
-cask 'tuple'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
@@ -86,6 +61,8 @@ cask 'zoom'
 # Quicklook
 cask 'qlmarkdown'
 cask 'quicklook-json'
+cask 'quicklook-csv'
+cask 'quicknfo'
 
 # Fonts
 cask 'font-lato'
@@ -95,13 +72,21 @@ cask 'font-source-code-pro-for-powerline'
 cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
+cask 'font-caskaydia-cove-nerd-font'
+cask 'font-fira-code-nerd-font'
 
 # Mac App Store
-mas 'Byword', id: 420212497
-mas 'Giphy Capture', id: 668208984
-mas 'Keynote', id: 409183694
-mas 'Numbers', id: 409203825
-mas 'Spark', id: 1176895641
-mas 'Speedtest', id: 1153157709
-mas 'Things', id: 904280696
-mas 'Tweetbot', id: 1384080005
+mas 'Amphetamine', id: 937984704
+mas 'CARROT Weather', id: 993487541
+mas 'Deliveries', id: 924726344
+mas 'Fantastical', id: 975937182
+mas 'GIPHY CAPTURE', id: 668208984
+mas 'GoodNotes', id: 1444383602
+mas 'iStat Menus', id: 1319778037
+mas 'Microsoft Excel', id: 462058435
+mas 'Microsoft OneNote', id: 784801555
+mas 'Microsoft Word', id: 462054704
+mas 'OneDrive', id: 823766827
+mas 'SketchBook', id: 863486266
+mas 'Slack', id: 803453959
+mas 'Xcode', id: 497799835

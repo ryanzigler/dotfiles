@@ -36,6 +36,15 @@ alias docker-composer="docker-compose"
 alias mssql="docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=LaravelWow1986! -p 1433:1433 mcr.microsoft.com/mssql/server:2017-latest"
 
 # Git
+alias ga='git add'
+alias gaa='git add --all'
+alias gcmsg='git commit -m'
+alias get="git "
+alias gf='git fetch'
+alias got="git "
+alias gpr='git pull --rebase'
+alias gpom='git push origin master'
+
 alias gst="git status"
 alias gb="git branch"
 alias gc="git checkout"
@@ -52,3 +61,6 @@ alias resolve="git add . && git commit --no-edit"
 alias stash="git stash -u"
 alias unstage="git restore --staged ."
 alias wip="commit wip"
+
+#VS Code
+alias install-eslint="exec 3<&1;bash <&3 <(curl https://raw.githubusercontent.com/ryanzigler/eslint-prettier-airbnb-react-master/master/eslint-prettier-config.sh 2> /dev/null)"
