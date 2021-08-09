@@ -49,7 +49,6 @@ cask 'spotify'
 cask 'sublime-text'
 cask 'slack'
 cask 'visual-studio-code'
-cask 'vlc'
 cask 'zoom'
 
 # Quicklook
