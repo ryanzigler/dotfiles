@@ -50,6 +50,7 @@ cask 'spotify'
 cask 'sublime-text'
 cask 'slack'
 cask 'visual-studio-code'
+cask 'whatsapp'
 cask 'zoom'
 
 # Quicklook
