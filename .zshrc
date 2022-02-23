@@ -7,60 +7,37 @@ fi
 
 source $HOME/antigen.zsh
 
-
-## Use oh-my-zsh
-antigen use oh-my-zsh
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
 ## Plugins
 
-antigen bundle git
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zdharma/fast-syntax-highlighting
-antigen bundle lukechilds/zsh-better-npm-completion
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="minimal"
 
-## NVM Plugin with lazy loading
-export NVM_LAZY_LOAD=true
-antigen bundle lukechilds/zsh-nvm
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 
 ## Adds tips for remembering defined aliases
 antigen bundle djui/alias-tips
 
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-## Load a custom Theme
-#antigen theme spaceship-prompt/spaceship-prompt
-antigen theme romkatv/powerlevel10k
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-## Syntax Highlighting Settings
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-#ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red') # To have commands starting with `rm -rf` in red:
-#ZSH_HIGHLIGHT_STYLES[default]='none'
-#ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=009'
-#ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=009,standout'
-#ZSH_HIGHLIGHT_STYLES[alias]='fg=white,bold'
-#ZSH_HIGHLIGHT_STYLES[builtin]='fg=white,bold'
-#ZSH_HIGHLIGHT_STYLES[function]='fg=white,bold'
-#ZSH_HIGHLIGHT_STYLES[command]='fg=white,bold'
-#ZSH_HIGHLIGHT_STYLES[precommand]='fg=white,underline'
-#ZSH_HIGHLIGHT_STYLES[commandseparator]='none'
-#ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=009'
-#ZSH_HIGHLIGHT_STYLES[path]='fg=214,underline'
-#ZSH_HIGHLIGHT_STYLES[globbing]='fg=063'
-#ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=white,underline'
-#ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='none'
-#ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='none'
-#ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='none'
-#ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=063'
-#ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=063'
-#ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=009'
-#ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=009'
-#ZSH_HIGHLIGHT_STYLES[assign]='none'
-
-## Syntax Highlighting for ZSH
-### LOAD AS LAST ANTIGEN BUNDLE ###
-#antigen bundle zsh-users/zsh-syntax-highlighting
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # 3. Commit Antigen Configuration
 antigen apply
@@ -70,7 +47,11 @@ source $HOME/.aliases
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -89,8 +70,8 @@ HIST_STAMPS="dd/mm/yyyy"
 ZSH_CUSTOM=$DOTFILES
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(artisan git)
