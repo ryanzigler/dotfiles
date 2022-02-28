@@ -42,7 +42,7 @@ $HOME/.composer/vendor/bin/valet install
 #mkdir $HOME/Coding
 
 # Create sites subdirectories
-mkdir $HOME/Coding/crometrics
+mkdir $HOME/Code/crometrics
 
 # Clone Github repositories
 $DOTFILES/clone.sh
