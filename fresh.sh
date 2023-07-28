@@ -33,6 +33,7 @@ mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_passwor
 #mkdir $HOME/Coding
 
 # Create sites subdirectories
+mkdir $HOME/Code
 mkdir $HOME/Code/crometrics
 
 # Clone Github repositories
