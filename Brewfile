@@ -53,7 +53,6 @@ cask 'sublime-text'
 cask 'slack'
 cask 'visual-studio-code'
 cask 'zoom'
-cask 'zwift'
 
 # Quicklook
 cask 'qlmarkdown'
