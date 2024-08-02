@@ -49,7 +49,7 @@ cask 'raycast'
 cask 'soundsource'
 cask 'spotify'
 cask 'sublime-text'
-cask 'slack'
+ cask 'slack'
 cask 'visual-studio-code'
 cask 'zoom'
 
