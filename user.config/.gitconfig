@@ -8,6 +8,9 @@
 [includeIf "gitdir:~/Code/work/crometrics/"]
     path = $DOTFILES_DIR/.gitconfig-ryanzigler
 
+[core]
+    excludesFile = ~/.dotfiles/.gitignore_global
+
 [filter "lfs"]
     clean = "git-lfs clean -- %f"
     smudge = "git-lfs smudge -- %f"
@@ -15,9 +18,9 @@
     required = true
 
 [user]
-	email = rpzigler@gmail.com
-	name = Ryan Zigler
+    email = rpzigler@gmail.com
+    name = Ryan Zigler
 
 [alias]
-	cleanup = !sh -c \"git remote prune origin && git branch -vv | grep \\\": gone]\\\" | awk \\\"{print \\\\\\$1}\\\" | xargs -r git branch -d\"
-	helper = store
+    cleanup = "!sh -c 'git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -d'"
+    helper = store
