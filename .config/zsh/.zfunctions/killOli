@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# function killOli {
+  kill $(lsof -i :4281 | grep node);
+#}

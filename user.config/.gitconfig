@@ -1,0 +1,23 @@
+
+[includeIf "gitdir:~/Code/cro-metrics-code/"]
+    path = $DOTFILES_DIR/.gitconfig-cro-metrics-code
+
+[includeIf "gitdir:~/Code/personal/"]
+    path = $DOTFILES_DIR/.gitconfig-ryanzigler
+
+[includeIf "gitdir:~/Code/work/crometrics/"]
+    path = $DOTFILES_DIR/.gitconfig-ryanzigler
+
+[filter "lfs"]
+    clean = "git-lfs clean -- %f"
+    smudge = "git-lfs smudge -- %f"
+    process = "git-lfs filter-process"
+    required = true
+
+[user]
+	email = rpzigler@gmail.com
+	name = Ryan Zigler
+
+[alias]
+	cleanup = !sh -c \"git remote prune origin && git branch -vv | grep \\\": gone]\\\" | awk \\\"{print \\\\\\$1}\\\" | xargs -r git branch -d\"
+	helper = store

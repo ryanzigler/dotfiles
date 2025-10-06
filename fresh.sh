@@ -10,11 +10,6 @@ else
   echo "Xcode Command Line Tools already installed."
 fi
 
-# Check for Oh My Zsh and install if we don't have it
-#if test ! $(which omz); then
-#  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
-#fi
-
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -23,32 +18,40 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-ln -sw $HOME/.dotfiles/.zshrc $HOME/.zshrc
+CONFIG_SOURCE_DIR="$PWD/.config"
+CONFIG_TARGET_DIR="$HOME/.config"
 
-# Update Homebrew recipes
-#brew update
+if [ -d "$CONFIG_SOURCE_DIR" ]; then
+  mkdir -p "$CONFIG_TARGET_DIR"
+
+  for dir in "$CONFIG_SOURCE_DIR"/*; do
+    [ -d "$dir" ] || continue
+
+    name=$(basename "$dir")
+    target="$CONFIG_TARGET_DIR/$name"
+
+    rm -rf "$target"
+    ln -s "$dir" "$target"
+  done
+fi
+
+rm -f "$HOME/.zshrc"
+ln -s "$CONFIG_TARGET_DIR/zsh/.zshrc" "$HOME/.zshrc"
+
+rm -f "$HOME/.zshenv"
+ln -s "$CONFIG_TARGET_DIR/zsh/.zshenv" "$HOME/.zshenv"
+
 
 # Install all our dependencies with bundle (See Brewfile)
-brew tap homebrew/bundle
 brew bundle --file ./Brewfile
-
-# Set default MySQL root password and auth type
-mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password BY 'password'; FLUSH PRIVILEGES;"
-
-# Create a Sites directory
-#mkdir $HOME/Coding
 
 # Create sites subdirectories
 mkdir $HOME/Code
+mkdir $HOME/Code/work
 mkdir $HOME/Code/crometrics
 
 # Clone Github repositories
 ./clone.sh
-
-# Symlink the Mackup config file to the home directory
-ln -s ./.mackup.cfg $HOME/.mackup.cfg
 
 # Set macOS preferences - we will run this last because this will reload the shell
 source ./.macos

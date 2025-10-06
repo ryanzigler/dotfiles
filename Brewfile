@@ -1,78 +1,102 @@
 # Taps
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
-tap 'stripe/stripe-cli'
+tap "homebrew/autoupdate"
+tap "homebrew/services"
+tap "shaunsingh/sfmono-nerd-font-ligaturized"
 
 # Binaries
-brew 'coreutils' # Those that come with macOS are outdated
+brew 'antidote'
+brew 'baobab'
+brew 'btop'
+brew 'coreutils'
+brew 'curl'
 brew 'ffmpeg'
+brew 'fnm'
 brew 'gh'
-brew 'git'
 brew 'gist'
-brew 'mackup'
-brew 'mas' # Mac App Store manager
-brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
-brew 'tree' # List directories in a tree structure
-brew 'zsh'
-brew 'nano'
-brew 'nvm'
-brew 'weget'
-
-# Spatie Medialibrary
-cask 'imageoptim'
+brew 'git-lfs'
+brew 'git'
+brew 'huggingface-cli'
 brew 'jpegoptim'
+brew 'jq'
+brew 'mas'
+brew 'micro'
+brew 'nano'
+brew 'optipng'
+brew 'oxipng'
+brew 'pipx'
+brew 'pkgconf'
 brew 'pngquant'
-brew 'svgo'
+brew 'python@3.10'
+brew 'python@3.11'
+brew 'python@3.13'
+brew 'tmux'
+brew 'wget'
+brew 'zsh'
 
 # Apps
-cask '1password'
+brew "codex"
 cask '1password-cli'
+cask '1password'
+cask 'altserver'
 cask 'appcleaner'
-# cask 'aerial'
-cask 'caffeine'
+cask 'asana'
+cask 'bruno'
+cask 'chatgpt'
+cask 'claude'
+cask 'cleanshot'
+cask 'conductor'
+cask 'cursor'
+cask 'cyberghost-vpn'
 cask 'figma'
 cask 'firefox'
-cask 'google-backup-and-sync'
-cask 'google-chrome'
-# cask 'helo'
-# cask 'herd'
-cask 'iina'
-# cask 'insomnia'
-cask 'postman'
-cask 'rectangle'
-cask 'signal'
-# cask 'pastebot'
-# cask 'ray'
-cask 'raycast'
-# cask 'screenflow'
-cask 'soundsource'
-cask 'spotify'
-cask 'sublime-text'
- cask 'slack'
-cask 'visual-studio-code'
-cask 'zoom'
-
-# Quicklook
-cask 'qlmarkdown'
-cask 'quicklook-json'
-cask 'quicklook-csv'
-cask 'quicknfo'
-
-# Fonts
+cask 'font-anonymous-pro'
+cask 'font-cascadia-code-pl'
+cask 'font-caskaydia-cove-nerd-font'
+cask 'font-fira-code-nerd-font'
 cask 'font-lato'
+cask 'font-monaspace'
 cask 'font-open-sans'
 cask 'font-roboto'
+cask 'font-sf-mono-nerd-font-ligaturized'
 cask 'font-source-code-pro-for-powerline'
 cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
-cask 'font-caskaydia-cove-nerd-font'
-cask 'font-fira-code-nerd-font'
+cask 'ghostty'
+cask 'google-backup-and-sync'
+cask 'google-chrome'
+cask 'helium-browser'
+cask 'hoppscotch'
+cask 'iina'
+cask 'imageoptim'
+cask 'jordanbaird-ice'
+cask 'keka'
+cask 'legcord'
+cask 'logi-options+'
+cask 'maccy'
+cask 'microsoft-teams'
+cask 'obs'
+cask 'orbstack'
+cask 'parsec'
+cask 'postgres-unofficial'
+cask 'raycast'
+cask 'rectangle'
+cask 'rustdesk'
+cask 'signal'
+cask 'slack'
+cask 'soundsource'
+cask 'spotify'
+cask 'yaak'
+cask 'zoom'
+
+# Fonts
 
 # Mac App Store
-mas 'Amphetamine', id: 937984704
 mas 'Fantastical', id: 975937182
+mas 'Harvest', id: 355395846
 mas 'iStat Menus', id: 1319778037
+mas 'Okta Verify', id: 490179405
 mas 'OneDrive', id: 823766827
+mas 'Pixelmator Pro', id: 1289583905
 mas 'Slack', id: 803453959
 mas 'Xcode', id: 497799835

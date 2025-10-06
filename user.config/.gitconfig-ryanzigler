@@ -1,0 +1,22 @@
+[user]
+    email = "rpzigler@gmail.com"
+    name = "Ryan Zigler"
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDfOO0xoG5N2n9/TcI2SNMGDH8Zc0dH0bSvnvFTF/dHi
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+    gpgsign = true
+
+[core]
+    editor = "cursor --wait"
+
+[credential]
+    helper = "cache --timeout=31536000"
+
+[http]
+    postBuffer = 524288000

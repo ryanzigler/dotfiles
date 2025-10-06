@@ -1,0 +1,5 @@
+[user]
+    email = "code@crometrics.com"
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/cro-metrics-code"

@@ -1,0 +1,62 @@
+theme = OneDarkPro
+window-padding-x = 16
+
+# Auto-update channel | tip (latest), stable (stable)
+auto-update-channel = tip
+
+# Quick terminal
+quick-terminal-position = bottom
+quick-terminal-screen = mouse
+quick-terminal-autohide = false
+
+
+macos-icon = custom-style
+macos-icon-frame = aluminum
+macos-icon-ghost-color = #e06c75
+macos-icon-screen-color = #282935
+
+
+font-family = Monaspace Argon Var
+font-size = 14
+font-thicken = true
+
+##### Monaspace Argon Variables #####
+# Enables texture healing
+font-feature = calt
+
+# Alternate `0` to containing a slash
+font-feature = cv01 = 2
+
+# Alternate (no-serif) `1`
+font-feature = cv02
+
+# Alternate `l` and `i` characters
+# font-feature = cv10
+
+# Ligatures related to the equals glyph like != and ===
+font-feature = ss01
+
+# Ligatures for greater/less or equal (<=, >=)
+font-feature = ss02
+
+# Ligatures related to arrows like -> and ~>
+font-feature = ss03
+
+# Ligatures related to markup, like </ and />
+font-feature = ss04
+
+# Ligatures related to spacing of repeating characters, like /// or ||
+font-feature = liga
+
+font-variation = wght=450
+font-variation-bold = wght=700
+font-variation-italic = slnt=-11
+font-variation-italic = wght=450
+font-variation-bold-italic = slnt=-11
+font-variation-bold-italic = wght=700
+
+##### Keybinds #####
+
+keybind = global:unconsumed:ctrl+`=toggle_quick_terminal
+keybind = super+backspace=text:\x15
+keybind = shift+enter=text:\n
