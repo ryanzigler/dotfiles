@@ -1,6 +1,5 @@
 # Taps
 tap "homebrew/autoupdate"
-tap "homebrew/services"
 tap "shaunsingh/sfmono-nerd-font-ligaturized"
 
 # Binaries
@@ -49,19 +48,6 @@ cask 'cursor'
 cask 'cyberghost-vpn'
 cask 'figma'
 cask 'firefox'
-cask 'font-anonymous-pro'
-cask 'font-cascadia-code-pl'
-cask 'font-caskaydia-cove-nerd-font'
-cask 'font-fira-code-nerd-font'
-cask 'font-lato'
-cask 'font-monaspace'
-cask 'font-open-sans'
-cask 'font-roboto'
-cask 'font-sf-mono-nerd-font-ligaturized'
-cask 'font-source-code-pro-for-powerline'
-cask 'font-source-code-pro'
-cask 'font-source-sans-pro'
-cask 'font-source-serif-pro'
 cask 'ghostty'
 cask 'google-backup-and-sync'
 cask 'google-chrome'
@@ -83,13 +69,25 @@ cask 'raycast'
 cask 'rectangle'
 cask 'rustdesk'
 cask 'signal'
-cask 'slack'
 cask 'soundsource'
 cask 'spotify'
 cask 'yaak'
 cask 'zoom'
 
 # Fonts
+cask 'font-anonymous-pro'
+cask 'font-cascadia-code-pl'
+cask 'font-caskaydia-cove-nerd-font'
+cask 'font-fira-code-nerd-font'
+cask 'font-lato'
+cask 'font-monaspace'
+cask 'font-open-sans'
+cask 'font-roboto'
+cask 'font-sf-mono-nerd-font-ligaturized'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'
 
 # Mac App Store
 mas 'Fantastical', id: 975937182

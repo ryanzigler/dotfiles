@@ -46,3 +46,6 @@ path=(
 
 # OrbStack
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# Cargo (Rust)
+. "$HOME/.cargo/env"
