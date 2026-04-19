@@ -89,3 +89,6 @@ alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 
 # Navigate to `~/.config/zsh/`
 alias zdot='cd ${ZDOTDIR:-~}'
+
+# Claude Code
+alias cc="claude code"

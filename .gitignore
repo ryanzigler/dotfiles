@@ -1,6 +1,5 @@
 ### .gitignore
 
-.antidote/
 .zcompcache/
 .zsh_sessions/
 .zcompdump*
@@ -14,3 +13,4 @@
 ~*
 .DS_Store
 .config/raycast/
+.serena

@@ -12,10 +12,10 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 
-export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
 # Text Editor
-export EDITOR="micro"
+export EDITOR="nano"
 export VISUAL="$EDITOR"
 
 # fnm
@@ -31,6 +31,15 @@ export HOMEBREW_NO_ENV_HINTS=TRUE
 # pnpm
 export PNPM_HOME="${PNPM_HOME:-$HOME/Library/pnpm}"
 
+# bun
+export BUN_INSTALL="${BUN_INSTALL:-$HOME/.bun}"
+
+# pyenv
+export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
+
+# Claude Code
+export CLAUDE_CODE_NO_FLICKER=1
+
 # Dedupe paths
 typeset -gU path fpath
 
@@ -41,11 +50,28 @@ path=(
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $PNPM_HOME(N)
+  $BUN_INSTALL(N)/bin(N)
+  $PYENV_ROOT(N)/bin(N)
   $path
 )
 
 # OrbStack
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
+# bun completions
+[ -s "/Users/ryan/.bun/_bun" ] && source "/Users/ryan/.bun/_bun"
+
+# OpenClaw Completion
+# source "/Users/ryan/.openclaw/completions/openclaw.zsh"
+
 # Cargo (Rust)
 . "$HOME/.cargo/env"
+
+# Posthog
+. "$HOME/.posthog/env"
+
+# pyenv
+# eval "$(pyenv init - zsh)"
+
+# Host-specific overrides and secrets (gitignored)
+[[ -f ${ZDOTDIR}/.zshenv.local ]] && source ${ZDOTDIR}/.zshenv.local

@@ -18,6 +18,9 @@ if test ! $(which brew); then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Initialize submodules (antidote, etc.)
+git submodule update --init --recursive
+
 CONFIG_SOURCE_DIR="$PWD/.config"
 CONFIG_TARGET_DIR="$HOME/.config"
 
@@ -30,25 +33,39 @@ if [ -d "$CONFIG_SOURCE_DIR" ]; then
     name=$(basename "$dir")
     target="$CONFIG_TARGET_DIR/$name"
 
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+      echo "Refusing to clobber existing non-symlink: $target" >&2
+      continue
+    fi
+
     rm -rf "$target"
     ln -s "$dir" "$target"
   done
 fi
 
-rm -f "$HOME/.zshrc"
-ln -s "$CONFIG_TARGET_DIR/zsh/.zshrc" "$HOME/.zshrc"
+link_safe() {
+  src="$1"
+  dst="$2"
+  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+    echo "Refusing to clobber existing non-symlink: $dst" >&2
+    return 1
+  fi
+  rm -f "$dst"
+  ln -s "$src" "$dst"
+}
 
-rm -f "$HOME/.zshenv"
-ln -s "$CONFIG_TARGET_DIR/zsh/.zshenv" "$HOME/.zshenv"
+link_safe "$CONFIG_TARGET_DIR/zsh/.zshrc" "$HOME/.zshrc"
+link_safe "$CONFIG_TARGET_DIR/zsh/.zshenv" "$HOME/.zshenv"
+link_safe "$PWD/user.config/.gitconfig" "$HOME/.gitconfig"
+link_safe "$PWD/.gitignore_global" "$HOME/.gitignore_global"
 
 
 # Install all our dependencies with bundle (See Brewfile)
 brew bundle --file ./Brewfile
 
 # Create sites subdirectories
-mkdir $HOME/Code
-mkdir $HOME/Code/work
-mkdir $HOME/Code/crometrics
+mkdir -p "$HOME/Developer/work/crometrics"
+mkdir -p "$HOME/Developer/personal"
 
 # Clone Github repositories
 ./clone.sh

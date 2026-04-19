@@ -1,15 +1,14 @@
+[includeIf "gitdir:~/Developer/cro-metrics-code/"]
+    path = ~/dotfiles/user.config/.gitconfig-crometrics-code
 
-[includeIf "gitdir:~/Code/cro-metrics-code/"]
-    path = $DOTFILES_DIR/.gitconfig-cro-metrics-code
+[includeIf "gitdir:~/Developer/personal/"]
+    path = ~/dotfiles/user.config/.gitconfig-ryanzigler
 
-[includeIf "gitdir:~/Code/personal/"]
-    path = $DOTFILES_DIR/.gitconfig-ryanzigler
-
-[includeIf "gitdir:~/Code/work/crometrics/"]
-    path = $DOTFILES_DIR/.gitconfig-ryanzigler
+[includeIf "gitdir:~/Developer/work/"]
+    path = ~/dotfiles/user.config/.gitconfig-ryanzigler
 
 [core]
-    excludesFile = ~/.dotfiles/.gitignore_global
+    excludesFile = ~/dotfiles/.gitignore_global
 
 [filter "lfs"]
     clean = "git-lfs clean -- %f"
