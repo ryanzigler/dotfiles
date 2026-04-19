@@ -13,3 +13,4 @@
 *.zwc.old
 ~*
 .DS_Store
+.config/raycast/
