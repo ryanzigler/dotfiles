@@ -3,7 +3,6 @@ tap "homebrew/autoupdate"
 tap "shaunsingh/sfmono-nerd-font-ligaturized"
 
 # Binaries
-brew 'antidote'
 brew 'baobab'
 brew 'btop'
 brew 'coreutils'
@@ -18,7 +17,6 @@ brew 'huggingface-cli'
 brew 'jpegoptim'
 brew 'jq'
 brew 'mas'
-brew 'micro'
 brew 'nano'
 brew 'optipng'
 brew 'oxipng'
@@ -28,6 +26,7 @@ brew 'pngquant'
 brew 'python@3.10'
 brew 'python@3.11'
 brew 'python@3.13'
+brew 'starship'
 brew 'tmux'
 brew 'wget'
 brew 'zsh'
@@ -91,10 +90,7 @@ cask 'font-source-serif-pro'
 
 # Mac App Store
 mas 'Fantastical', id: 975937182
-mas 'Harvest', id: 355395846
 mas 'iStat Menus', id: 1319778037
-mas 'Okta Verify', id: 490179405
-mas 'OneDrive', id: 823766827
 mas 'Pixelmator Pro', id: 1289583905
 mas 'Slack', id: 803453959
 mas 'Xcode', id: 497799835

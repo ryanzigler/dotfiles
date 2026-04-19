@@ -14,8 +14,7 @@ belak/zsh-utils path:completion/functions kind:autoload post:compstyle_zshzoo_se
 belak/zsh-utils path:history
 
 
-# Prompt
-spaceship-prompt/spaceship-prompt
+# Prompt — starship, initialized in .zshrc.d/starship.zsh
 
 # Utilities
 zshzoo/macos conditional:is-macos

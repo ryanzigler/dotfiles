@@ -40,6 +40,9 @@ export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
 # Claude Code
 export CLAUDE_CODE_NO_FLICKER=1
 
+# Starship: point at the tracked config in this repo.
+export STARSHIP_CONFIG="${DOTFILES_DIR}/.config/starship.toml"
+
 # Dedupe paths
 typeset -gU path fpath
 

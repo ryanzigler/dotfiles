@@ -1,0 +1,10 @@
+# Preferences preserved from the old spaceship config (.config/spaceship/spaceship.zsh):
+# package, gcloud, docker sections were hidden. Starship equivalents:
+[package]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[docker_context]
+disabled = true
