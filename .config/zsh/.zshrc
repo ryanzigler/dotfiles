@@ -20,14 +20,29 @@ autoload -Uz $ZFUNCDIR/*(.:t)
 # Set any zstyles you might use for configuration.
 [[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
 
-# Clone antidote if necessary.
+# Antidote: lazy-load pattern. Only source antidote.zsh when the static file
+# needs regenerating; otherwise just source the cached static file directly.
+# See: https://github.com/mattmc3/antidote#static-mode
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+
 if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
+  git clone --depth=1 https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
 fi
 
-# Create an amazing Zsh config using antidote plugins.
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
-antidote load
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  (source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh && antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh)
+fi
+
+source ${zsh_plugins}.zsh
+
+# Lazy-load antidote itself so `antidote update`, `antidote list`, etc. still work.
+antidote() {
+  unset -f antidote
+  source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+  antidote "$@"
+}
+
+unset zsh_plugins
 
 # Source anything in .zshrc.d.
 for _rc in ${ZDOTDIR:-$HOME}/.zshrc.d/*.zsh; do
@@ -38,17 +53,7 @@ for _rc in ${ZDOTDIR:-$HOME}/.zshrc.d/*.zsh; do
 done
 unset _rc
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/ryan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ryan/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/ryan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ryan/google-cloud-sdk/completion.zsh.inc'; fi
-
-# bun completions
-[ -s "/Users/ryan/.bun/_bun" ] && source "/Users/ryan/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# bun: BUN_INSTALL, PATH, and completions are set in .zshenv.
+# gcloud PATH + completion are sourced from .zshrc.d/gcloud.zsh (completion is deferred).
 
 ulimit -n 65536

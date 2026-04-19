@@ -43,7 +43,7 @@ export CLAUDE_CODE_NO_FLICKER=1
 # Dedupe paths
 typeset -gU path fpath
 
-# Add paths
+# Add paths. Completions, evals, and interactive-only integrations live in .zshrc.d/.
 path=(
   $HOME/{,s}bin(N)
   $HOME/.local/{,s}bin(N)
@@ -52,26 +52,11 @@ path=(
   $PNPM_HOME(N)
   $BUN_INSTALL(N)/bin(N)
   $PYENV_ROOT(N)/bin(N)
+  $HOME/.cargo/bin(N)
+  $HOME/.posthog(N)
+  $HOME/.orbstack/bin(N)
   $path
 )
-
-# OrbStack
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-
-# bun completions
-[ -s "/Users/ryan/.bun/_bun" ] && source "/Users/ryan/.bun/_bun"
-
-# OpenClaw Completion
-# source "/Users/ryan/.openclaw/completions/openclaw.zsh"
-
-# Cargo (Rust)
-. "$HOME/.cargo/env"
-
-# Posthog
-. "$HOME/.posthog/env"
-
-# pyenv
-# eval "$(pyenv init - zsh)"
 
 # Host-specific overrides and secrets (gitignored)
 [[ -f ${ZDOTDIR}/.zshenv.local ]] && source ${ZDOTDIR}/.zshenv.local

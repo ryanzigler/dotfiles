@@ -21,12 +21,13 @@ spaceship-prompt/spaceship-prompt
 zshzoo/macos conditional:is-macos
 belak/zsh-utils path:utility
 romkatv/zsh-bench kind:path
-ohmyzsh/ohmyzsh path:plugins/extract
-dominik-schwabe/zsh-fnm
+ohmyzsh/ohmyzsh path:plugins/extract kind:defer
+dominik-schwabe/zsh-fnm kind:defer
 
-# Other Fish-like features
-zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
-zsh-users/zsh-autosuggestions               # Auto-suggestions
-zsh-users/zsh-history-substring-search      # Up/Down to search history
+# Other Fish-like features — all deferred via zsh-defer.
+# Order: autosuggestions → fsh (wraps widgets, must be last) → history-substring-search
+zsh-users/zsh-autosuggestions               kind:defer
+zdharma-continuum/fast-syntax-highlighting  kind:defer
+zsh-users/zsh-history-substring-search      kind:defer
 
 
