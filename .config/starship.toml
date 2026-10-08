@@ -1,5 +1,5 @@
-# Preferences preserved from the old spaceship config (.config/spaceship/spaceship.zsh):
-# package, gcloud, docker sections were hidden. Starship equivalents:
+command_timeout = 1500
+
 [package]
 disabled = true
 

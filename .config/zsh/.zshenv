@@ -18,15 +18,15 @@ export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 export EDITOR="nano"
 export VISUAL="$EDITOR"
 
-# fnm
-export ZSH_FNM_ENV_EXTRA_ARGS="--use-on-cd"
-
 # Homebrew
 export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
 export HOMEBREW_NO_ENV_HINTS=TRUE
 
 # Puppeteer
 # export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# fnm (loaded via dominik-schwabe/zsh-fnm in .zsh_plugins.txt)
+export ZSH_FNM_ENV_EXTRA_ARGS="--use-on-cd"
 
 # pnpm
 export PNPM_HOME="${PNPM_HOME:-$HOME/Library/pnpm}"
@@ -48,18 +48,21 @@ typeset -gU path fpath
 
 # Add paths. Completions, evals, and interactive-only integrations live in .zshrc.d/.
 path=(
-  $HOME/{,s}bin(N)
-  $HOME/.local/{,s}bin(N)
-  /opt/{homebrew,local}/{,s}bin(N)
-  /usr/local/{,s}bin(N)
-  $PNPM_HOME(N)
-  $BUN_INSTALL(N)/bin(N)
-  $PYENV_ROOT(N)/bin(N)
-  $HOME/.cargo/bin(N)
-  $HOME/.posthog(N)
-  $HOME/.orbstack/bin(N)
-  $path
+	$HOME/{,s}bin(N)
+	$HOME/.local/{,s}bin(N)
+	/opt/{homebrew,local}/{,s}bin(N)
+	/usr/local/{,s}bin(N)
+	$PNPM_HOME(N)
+	$BUN_INSTALL(N)/bin(N)
+	$PYENV_ROOT(N)/bin(N)
+	$HOME/.cargo/bin(N)
+	$HOME/.posthog(N)
+	$HOME/.orbstack/bin(N)
+	$path
 )
 
 # Host-specific overrides and secrets (gitignored)
 [[ -f ${ZDOTDIR}/.zshenv.local ]] && source ${ZDOTDIR}/.zshenv.local
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.config/vite-plus/env"
