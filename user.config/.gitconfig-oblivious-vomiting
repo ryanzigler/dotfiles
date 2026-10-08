@@ -1,0 +1,5 @@
+[user]
+    email = "th1515athr0waway3ma1l@gmail.com"
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/github__oblivious-vomiting"

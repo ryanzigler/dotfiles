@@ -1,5 +1,6 @@
-[includeIf "gitdir:~/Developer/cro-metrics-code/"]
-    path = ~/dotfiles/user.config/.gitconfig-crometrics-code
+
+[includeIf "gitdir:~/Developer/ai/"]
+    path = ~/dotfiles/user.config/.gitconfig-oblivious-vomiting
 
 [includeIf "gitdir:~/Developer/personal/"]
     path = ~/dotfiles/user.config/.gitconfig-ryanzigler
@@ -16,10 +17,7 @@
     process = "git-lfs filter-process"
     required = true
 
-[user]
-    email = rpzigler@gmail.com
-    name = Ryan Zigler
-
 [alias]
     cleanup = "!sh -c 'git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -d'"
+    gone = "!git fetch --prune && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
     helper = store
