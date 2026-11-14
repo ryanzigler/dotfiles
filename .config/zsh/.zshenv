@@ -37,6 +37,9 @@ export BUN_INSTALL="${BUN_INSTALL:-$HOME/.bun}"
 # pyenv
 export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
 
+# Railway CLI (replaces the installer's `source ~/.railway/env` in .zshrc)
+export RAILWAY_HOME="${RAILWAY_HOME:-$HOME/.railway}"
+
 # Claude Code
 export CLAUDE_CODE_NO_FLICKER=1
 
@@ -47,14 +50,19 @@ export STARSHIP_CONFIG="${DOTFILES_DIR}/.config/starship.toml"
 typeset -gU path fpath
 
 # Add paths. Completions, evals, and interactive-only integrations live in .zshrc.d/.
+# Vite+ bin goes first, matching where ~/.config/vite-plus/env puts it; its vp
+# wrapper and completions are sourced from .zshrc.d/vite-plus.zsh.
 path=(
+	$XDG_DATA_HOME/vite-plus/bin(N)
 	$HOME/{,s}bin(N)
 	$HOME/.local/{,s}bin(N)
 	/opt/{homebrew,local}/{,s}bin(N)
 	/usr/local/{,s}bin(N)
+	$PNPM_HOME/bin(N)
 	$PNPM_HOME(N)
-	$BUN_INSTALL(N)/bin(N)
-	$PYENV_ROOT(N)/bin(N)
+	$BUN_INSTALL/bin(N)
+	$PYENV_ROOT/bin(N)
+	$RAILWAY_HOME/bin(N)
 	$HOME/.cargo/bin(N)
 	$HOME/.posthog(N)
 	$HOME/.orbstack/bin(N)
@@ -63,6 +71,3 @@ path=(
 
 # Host-specific overrides and secrets (gitignored)
 [[ -f ${ZDOTDIR}/.zshenv.local ]] && source ${ZDOTDIR}/.zshenv.local
-
-# Vite+ bin (https://viteplus.dev)
-. "$HOME/.config/vite-plus/env"

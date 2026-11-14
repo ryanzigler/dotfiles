@@ -90,4 +90,4 @@ alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias zdot='cd ${ZDOTDIR:-~}'
 
 # Claude Code
-alias cc="aimux run"
+alias claude-pool='source ~/.config/nas-fleet/env.sh && CLAUDE_CONFIG_DIR=$HOME/.claude-pool claude'

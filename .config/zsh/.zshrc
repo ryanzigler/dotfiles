@@ -2,7 +2,10 @@
 #
 # .zshrc - Zsh file loaded on interactive shell sessions.
 #
-# bun: BUN_INSTALL, PATH, and completions are set in .zshenv.
+# bun, pnpm, Railway, and Vite+: env vars and PATH are set in .zshenv.
+# Completions (bun, OrbStack, vastai) are wired in .zshrc.d/completions.zsh.
+# Vite+'s vp wrapper and completions come from .zshrc.d/vite-plus.zsh.
+# conda is initialised from .zshrc.d/conda.zsh.
 # gcloud PATH + completion are sourced from .zshrc.d/gcloud.zsh (completion is deferred).
 #
 
@@ -72,26 +75,5 @@ unset _rc
 
 ulimit -n 65536
 
-# bun completions
-[ -s "/Users/ryan/.bun/_bun" ] && source "/Users/ryan/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# pnpm
-export PNPM_HOME='/Users/ryan/Library/pnpm'
-case ":$PATH:" in
-*":$PNPM_HOME/bin:"*) ;;
-*) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-
-# Vite+ bin (https://viteplus.dev)
-. "$HOME/.config/vite-plus/env"
-
-[ -f "/Users/ryan/.local/share/vastai/env.sh" ] && . "/Users/ryan/.local/share/vastai/env.sh" # vastai shell setup
-
-# >>> railway initialize >>>
-source "$HOME/.railway/env"
-# <<< railway initialize <<<
+# Put ~/.local/bin first and drop duplicates added by installers' `export PATH=` lines.
+path=($HOME/.local/bin $path)
