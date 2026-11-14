@@ -1,9 +1,8 @@
 #!/bin/zsh
 #
-# Vite+ (https://viteplus.dev): the `vp` wrapper (so `vp env use` can change
-# this shell) and vp/vpr completions. The installer's env file only wires
-# completions when compdef exists, which is true here (after antidote) but not
-# in .zshenv. Its bin dir is already on PATH from .zshenv.
+# Vite+ (https://viteplus.dev): `vp` wrapper and completions.
 #
+# Needs compdef, so it runs here after antidote rather than in .zshenv.
+# Kept in `vp env off` mode so Node comes from fnm.
 
 [[ -f $XDG_CONFIG_HOME/vite-plus/env ]] && source $XDG_CONFIG_HOME/vite-plus/env

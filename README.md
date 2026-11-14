@@ -12,16 +12,16 @@
          curl https://raw.githubusercontent.com/ryanzigler/dotfiles/HEAD/ssh.sh | sh -s "<EMAIL_ADDRESS>"
          ```
 
-3. Clone this repo to `~/.dotfiles`:
+3. Clone this repo to `~/dotfiles` (the git identity includes and `DOTFILES_DIR` assume this path):
 
    ```zsh
-   git clone --recursive git@github.com:ryanzigler/dotfiles.git ~/.dotfiles
+   git clone --recursive git@github.com:ryanzigler/dotfiles.git ~/dotfiles
    ```
 
-4. Run the installation:
+4. Run the installation. `--macos` also applies the macOS defaults in `.macos`; it needs sudo and restarts Finder, Dock and other apps, so leave it off when re-running on a machine you are using:
 
    ```zsh
-   cd ~/.dotfiles && ./fresh.sh
+   cd ~/dotfiles && ./fresh.sh --macos
    ```
 
 5. Restart to finalize the process

@@ -34,9 +34,6 @@ export PNPM_HOME="${PNPM_HOME:-$HOME/Library/pnpm}"
 # bun
 export BUN_INSTALL="${BUN_INSTALL:-$HOME/.bun}"
 
-# pyenv
-export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
-
 # Railway CLI (replaces the installer's `source ~/.railway/env` in .zshrc)
 export RAILWAY_HOME="${RAILWAY_HOME:-$HOME/.railway}"
 
@@ -61,7 +58,6 @@ path=(
 	$PNPM_HOME/bin(N)
 	$PNPM_HOME(N)
 	$BUN_INSTALL/bin(N)
-	$PYENV_ROOT/bin(N)
 	$RAILWAY_HOME/bin(N)
 	$HOME/.cargo/bin(N)
 	$HOME/.posthog(N)
@@ -69,5 +65,9 @@ path=(
 	$path
 )
 
-# Host-specific overrides and secrets (gitignored)
-[[ -f ${ZDOTDIR}/.zshenv.local ]] && source ${ZDOTDIR}/.zshenv.local
+# Host-specific overrides and secrets (gitignored). Looked up next to this
+# file's real location rather than in $ZDOTDIR, which is $HOME while
+# Cursor/VS Code shell integration sources ~/.zshenv.
+_zshenv_local=${${(%):-%x}:A:h}/.zshenv.local
+[[ ! -f $_zshenv_local ]] || source $_zshenv_local
+unset _zshenv_local

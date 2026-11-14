@@ -1,11 +1,6 @@
-# Logs and databases #
-######################
-*.log
-*.sql
-*.sqlite
-
-# OS generated files #
-######################
+########################
+## OS generated files ##
+########################
 .DS_Store
 .DS_Store?
 ._*
@@ -16,7 +11,8 @@ Thumbs.db
 .idea/
 .vagrant/
 
-# Claude Code #
-###############
+#################
+## Claude Code ##
+#################
 **/.claude/.cc-writes/
 **/.claude/settings.local.json

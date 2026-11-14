@@ -1,18 +1,21 @@
 #!/bin/zsh
 #
-# conda: defines the `conda` shell function and activates the base env.
-# Moved here from the `conda init` block in .zshrc. If `conda init` is run
-# again it re-adds that block to .zshrc; delete it there and keep this file.
+# conda: defines the `conda` shell function and puts condabin on PATH.
+# Replaces the `conda init` block in .zshrc. If `conda init` is run again it
+# re-adds that block to .zshrc; delete it there and keep this file.
 #
 
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
+_conda_base=/opt/homebrew/Caskroom/miniconda/base
+
+[[ -x $_conda_base/bin/conda ]] || {
+	unset _conda_base
+	return 0
+}
+
+if [[ -f $_conda_base/etc/profile.d/conda.sh ]]; then
+	source $_conda_base/etc/profile.d/conda.sh
 else
-	if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-		. "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-	else
-		export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-	fi
+	eval "$($_conda_base/bin/conda shell.zsh hook 2>/dev/null)"
 fi
-unset __conda_setup
+
+unset _conda_base

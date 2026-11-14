@@ -7,6 +7,7 @@
 # Vite+'s vp wrapper and completions come from .zshrc.d/vite-plus.zsh.
 # conda is initialised from .zshrc.d/conda.zsh.
 # gcloud PATH + completion are sourced from .zshrc.d/gcloud.zsh (completion is deferred).
+# History size and options are set in .zshrc.d/history.zsh, after the history plugin.
 #
 
 # Resolve this file's real directory so Cursor/VS Code shell integration (which sources ~/.zshrc with ZDOTDIR=$HOME) still finds the config.
@@ -15,15 +16,6 @@ ZSH_CONFIG_DIR=${${(%):-%x}:A:h}
 # Zsh options.
 setopt extended_glob
 setopt auto_cd
-
-# Writes each entry as: <epoch>:<elapsed>;<command> (e.g. 1726502400:10;ls -la)
-setopt EXTENDED_HISTORY
-
-#  Write each command as it completes rather than dumping the whole buffer at shell exit so a crashed or force-quit terminal doesn't lose the session
-setopt INC_APPEND_HISTORY_TIME
-
-HISTSIZE=100000
-SAVEHIST=100000
 
 # Ghostty shell integration
 if [[ -n "${GHOSTTY_RESOURCES_DIR}" ]]; then
@@ -44,8 +36,10 @@ autoload -Uz $ZFUNCDIR/*(.N:t)
 # See: https://github.com/mattmc3/antidote#static-mode
 zsh_plugins=$ZSH_CONFIG_DIR/.zsh_plugins
 
-if [[ ! -d $ZSH_CONFIG_DIR/.antidote ]]; then
-	git clone --depth=1 https://github.com/mattmc3/antidote $ZSH_CONFIG_DIR/.antidote
+# .antidote is a git submodule. A clone made without --recursive leaves an empty
+# directory behind, so test for the script rather than the directory.
+if [[ ! -f $ZSH_CONFIG_DIR/.antidote/antidote.zsh ]]; then
+	git -C $ZSH_CONFIG_DIR submodule update --init .antidote
 fi
 
 if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then

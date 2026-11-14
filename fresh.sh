@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
+
+# `--macos` applies the macOS defaults in set in `.macos`
+run_macos=false
+
+for arg in "$@"; do
+	case "$arg" in
+	--macos) run_macos=true ;;
+	*)
+		echo "Usage: ./fresh.sh [--macos]" >&2
+		exit 1
+		;;
+	esac
+done
+
 echo "Setting up your Mac..."
 
 # Check if Xcode Command Line Tools are installed
@@ -11,10 +26,10 @@ else
 fi
 
 # Check for Homebrew and install if we don't have it
-if test ! $(which brew); then
+if ! command -v brew >/dev/null; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
+	# New shells get brew from .zshenv and .zshrc.d/brew.zsh for the rest of the script
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -58,8 +73,17 @@ link_safe() {
 
 link_safe "$CONFIG_TARGET_DIR/zsh/.zshrc" "$HOME/.zshrc"
 link_safe "$CONFIG_TARGET_DIR/zsh/.zshenv" "$HOME/.zshenv"
-link_safe "$PWD/user.config/.gitconfig" "$HOME/.gitconfig"
 link_safe "$PWD/.gitignore_global" "$HOME/.gitignore_global"
+
+gitconfig_include='~/dotfiles/user.config/.gitconfig'
+
+if [ -L "$HOME/.gitconfig" ]; then
+	rm "$HOME/.gitconfig"
+fi
+
+if ! git config --file "$HOME/.gitconfig" --get-all include.path 2>/dev/null | grep -qxF "$gitconfig_include"; then
+	git config --file "$HOME/.gitconfig" --add include.path "$gitconfig_include"
+fi
 
 # Install all our dependencies with bundle (See Brewfile)
 brew bundle --file ./Brewfile
@@ -71,5 +95,9 @@ mkdir -p "$HOME/Developer/personal"
 # Clone Github repositories
 ./clone.sh
 
-# Set macOS preferences - we will run this last because this will reload the shell
-source ./.macos
+# Set macOS preferences last because it restarts Finder, Dock and other apps
+if $run_macos; then
+	source ./.macos
+else
+	echo "Skipped macOS defaults. Run ./fresh.sh --macos (or: source ./.macos) to apply them."
+fi

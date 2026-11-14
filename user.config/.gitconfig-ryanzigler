@@ -11,7 +11,6 @@
 
 [core]
     editor = "cursor --wait"
-    excludesfile = /Users/ryan/dotfiles/.gitignore_global
 
 [http]
     postBuffer = 524288000
